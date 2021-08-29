@@ -13,7 +13,7 @@
 # $ docdoc.sh cmd profile project file($1)
 
 if [ "$#" -ne 4 ]; then
-    echo "Usage: docdoc.sh gen PROFILE-ID PROJECT-NAME FILE-PATH"
+    echo "Usage: docdoc.sh gen 1001(PROFILE-ID) dokdo(PROJECT-NAME) FILE-PATH"
     exit 1
 fi
 if ! [ -e "$4" ]; then
@@ -40,10 +40,10 @@ status=$(echo $resp | tail -c 4)
 if [[ "$status" -ne 200 ]] ; then
     echo "status error: $body"
 else
-    cnt=$(echo "${body}" | /usr/bin/jq '[.data[]] | length ')
+    cnt=$(echo "${body}" | jq '[.data[]] | length ')
     for (( i = 0; i < $cnt; i++ )); do
-        data_id=$(echo "${body}" | /usr/bin/jq -r --argjson v $i '.data[$v].id' )
-        data_val=$(echo "${body}" | /usr/bin/jq -r --argjson v $i '.data[$v].val' )
+        data_id=$(echo "${body}" | jq -r --argjson v $i '.data[$v].id' )
+        data_val=$(echo "${body}" | jq -r --argjson v $i '.data[$v].val' )
 
         if [ $data_id = "out" ]; then
             echo "$file_path"

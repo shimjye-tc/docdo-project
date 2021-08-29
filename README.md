@@ -44,31 +44,32 @@ docdo-fm: Document do FreeMarker - BETA - Data is not safe!!!
   ```
 - cmd run
   - $ docdoc.sh gen PROFILE-ID PROJECT-NAME FILE-PATH
+  - run $ docdoc.sh gen 1001 dokdo test-file.java
 
 ### Run docdoc with IDE
 - intellij external tool
   - setting > tools > external tools
   ```
   program: docdoc.sh
-  arguments: gen PROFILE-ID PROJECT-NAME $FilePath$
+  arguments: gen 1001(PROFILE-ID) dokdo(PROJECT-NAME) $FilePath$
   ```
 - vscode external tool https://marketplace.visualstudio.com/items?itemName=lihui.vs-external-tools
   ```
   "vs-external-tools.externalCommand1.command": "docdoc.sh",
-  "vs-external-tools.externalCommand1.args": ["gen", "PROFILE-ID", "PROJECT-NAME", "$(ItemPath)"]
+  "vs-external-tools.externalCommand1.args": ["gen", "1001(PROFILE-ID)", "dokdo(PROJECT-NAME)", "$(ItemPath)"]
   ```
 - visual studio community 2019 for Mac
   ```
   command: docdoc.sh
-  arguments: gen PROFILE-ID PROJECT-NAME ${FileDir}/${FilePath}
+  arguments: gen 1001(PROFILE-ID) dokdo(PROJECT-NAME) ${FileDir}/${FilePath}
   ```
 - eclipse external tool
   ```
   run: docdoc.sh
   work-dir: ${project_loc}
-  args: gen PROFILE-ID PROJECT-NAME ${selected_resource_loc}
+  args: gen 1001(PROFILE-ID) dokdo(PROJECT-NAME) ${selected_resource_loc}
   ```
-- make a run-external-tool shortcut
+- make a run-external-tool shortcut (ex: cmd+shift+f11.)
 
 ### Try docdo-client to docdo-freemarker-server
 - 0: run docdoc with template-file.
